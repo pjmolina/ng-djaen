@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TemperatureInfo } from './weather/weather.component';
+import { EstadoCielo, TemperatureInfo } from './weather/weather.component';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +8,34 @@ import { TemperatureInfo } from './weather/weather.component';
 })
 export class AppComponent {
   title = 'app Jaen1';
+
+  ciudades = [
+    {
+      ciudad: 'Jaén',
+      temperatura: 20,
+      cielo: EstadoCielo.Soleado,
+    },
+    {
+      ciudad: 'Baeza',
+      temperatura: 21,
+      cielo: EstadoCielo.Lluvioso,
+    },
+    {
+      ciudad: 'Linares',
+      temperatura: 22,
+      cielo: EstadoCielo.Soleado,
+    },
+    {
+      ciudad: 'Cazorla',
+      temperatura: -5,
+      cielo: EstadoCielo.Nevado,
+    },
+    {
+      ciudad: 'Sevilla',
+      temperatura: 30,
+      cielo: EstadoCielo.Soleado,
+    },
+  ];
 
   notificarCambioTemperatura(event: TemperatureInfo): void {
     console.log(event);

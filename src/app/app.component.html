@@ -2,26 +2,10 @@
 <div>Hola</div>
 
 <app-weather
-  ciudad="Jaén"
-  [temperatura]="20"
-  (temperaturaChange)="notificarCambioTemperatura($event)"
->
-</app-weather>
-<app-weather
-  ciudad="Baeza"
-  [temperatura]="25"
-  (temperaturaChange)="notificarCambioTemperatura($event)"
->
-</app-weather>
-<app-weather
-  ciudad="Linares"
-  [temperatura]="22"
-  (temperaturaChange)="notificarCambioTemperatura($event)"
->
-</app-weather>
-<app-weather
-  ciudad="Sevilla"
-  [temperatura]="30"
+  *ngFor="let c of ciudades"
+  [ciudad]="c.ciudad"
+  [temperatura]="c.temperatura"
+  [cielo]="c.cielo"
   (temperaturaChange)="notificarCambioTemperatura($event)"
 >
 </app-weather>

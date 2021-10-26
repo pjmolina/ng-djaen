@@ -1,7 +1,13 @@
 <div class="weather">
   <div class="ciudad">{{ ciudad }}</div>
   <div class="temperatura">{{ temperatura }}ºC</div>
-  <div class="cielo">{{ cielo }}</div>
+
   <button (click)="incrementar(1)">+</button>
   <button (click)="decrementar(1)">-</button>
+
+  <div *ngIf="cielo === EstadoCielo.Soleado" class="cielo-soleado">Soleado</div>
+  <div *ngIf="cielo === EstadoCielo.Lluvioso" class="cielo-lluvioso">
+    Lluvioso
+  </div>
+  <div *ngIf="cielo === EstadoCielo.Nevado" class="cielo-nevado">Nevado</div>
 </div>
