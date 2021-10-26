@@ -1,2 +1,30 @@
 <h1>{{ title }}</h1>
 <div>Hola</div>
+
+<app-weather
+  ciudad="Jaén"
+  [temperatura]="20"
+  (temperaturaChange)="notificarCambioTemperatura($event)"
+>
+</app-weather>
+<app-weather
+  ciudad="Baeza"
+  [temperatura]="25"
+  (temperaturaChange)="notificarCambioTemperatura($event)"
+>
+</app-weather>
+<app-weather
+  ciudad="Linares"
+  [temperatura]="22"
+  (temperaturaChange)="notificarCambioTemperatura($event)"
+>
+</app-weather>
+<app-weather
+  ciudad="Sevilla"
+  [temperatura]="30"
+  (temperaturaChange)="notificarCambioTemperatura($event)"
+>
+</app-weather>
+
+<hr />
+Pie
