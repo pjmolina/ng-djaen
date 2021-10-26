@@ -8,6 +8,7 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
+import { LoggerService } from '../services/logger.service';
 
 export enum EstadoCielo {
   Soleado = 'sol',
@@ -34,20 +35,20 @@ export class WeatherComponent implements OnInit, OnDestroy, OnChanges {
 
   EstadoCielo = EstadoCielo;
 
-  constructor() {
-    console.log('1. Me construyo:', this.ciudad);
+  constructor(private logger: LoggerService) {
+    this.logger.log('1. Me construyo:' + this.ciudad);
   }
 
   ngOnInit(): void {
-    console.log('2. Me inicializo:', this.ciudad);
+    this.logger.log('2. Me inicializo:' + this.ciudad);
   }
 
   ngOnDestroy(): void {
-    console.log('4. Destruir');
+    this.logger.log('4. Destruir');
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('3. Hay cambios:', changes);
+    this.logger.log('3. Hay cambios:' + JSON.stringify(changes));
   }
 
   incrementar(inc: number): void {

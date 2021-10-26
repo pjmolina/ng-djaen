@@ -1,6 +1,20 @@
 <h1>{{ title }}</h1>
 <div>Hola</div>
 
+<label for="name">Nombre:</label>
+<input id="name" type="text" [(ngModel)]="nombre" />
+<br />
+
+<label for="surname">Apellido:</label>
+<input id="surname" type="text" [(ngModel)]="surname" />
+
+{{ nombre }} {{ surname }}
+
+<p>Fecha: {{ d1 | date }}</p>
+<p>Soleado: {{ true | boolean | uppercase }}</p>
+
+<p>Ciudades: {{ ciudades | json }}</p>
+
 <app-weather
   *ngFor="let c of ciudades"
   [ciudad]="c.ciudad"

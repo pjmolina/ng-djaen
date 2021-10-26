@@ -9,6 +9,11 @@ import { EstadoCielo, TemperatureInfo } from './weather/weather.component';
 export class AppComponent {
   title = 'app Jaen1';
 
+  nombre = 'Ana';
+  surname = 'Zamora';
+
+  d1 = new Date();
+
   ciudades = [
     {
       ciudad: 'Jaén',
