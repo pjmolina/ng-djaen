@@ -1,10 +1,10 @@
 <h1>{{ title }}</h1>
-<div>Hola</div>
+
+<!--
 
 <label for="name">Nombre:</label>
 <input id="name" type="text" [(ngModel)]="nombre" />
 <br />
-
 <label for="surname">Apellido:</label>
 <input id="surname" type="text" [(ngModel)]="surname" />
 
@@ -15,10 +15,15 @@
 
 <p>Soleado: {{ true | boolean | uppercase }}</p>
 
-<p>Ciudades: {{ ciudades | json }}</p>
+<p>Ciudades: {{ ciudades | json }}</p> -->
+
+<div>
+  <label for="filter">Filtro:</label>
+  <input id="filter" type="text" [(ngModel)]="cadenaDeBusqueda" />
+</div>
 
 <app-weather
-  *ngFor="let c of ciudades"
+  *ngFor="let c of ciudades | cityFilter: cadenaDeBusqueda"
   [ciudad]="c.ciudad"
   [temperatura]="c.temperatura"
   [cielo]="c.cielo"

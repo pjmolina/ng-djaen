@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Ciudad } from './ciudad';
 import { EstadoCielo, TemperatureInfo } from './weather/weather.component';
 
 @Component({
@@ -7,14 +8,15 @@ import { EstadoCielo, TemperatureInfo } from './weather/weather.component';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'app Jaen1';
+  title = 'Temperaturas de ciudades';
 
   nombre = 'Ana';
   surname = 'Zamora';
+  cadenaDeBusqueda = '';
 
   d1 = new Date();
 
-  ciudades = [
+  ciudades: Ciudad[] = [
     {
       ciudad: 'Jaén',
       temperatura: 20,

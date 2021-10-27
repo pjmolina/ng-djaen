@@ -6,9 +6,10 @@ import { BooleanPipe } from './pipes/boolean.pipe';
 import { Logger2Service, LoggerService } from './services/logger.service';
 import { WeatherComponent } from './weather/weather.component';
 import { CurrencyPipe } from './pipes/currency.pipe';
+import { CityFilterPipe } from './pipes/city-filter.pipe';
 
 @NgModule({
-  declarations: [AppComponent, WeatherComponent, BooleanPipe, CurrencyPipe],
+  declarations: [AppComponent, WeatherComponent, BooleanPipe, CurrencyPipe, CityFilterPipe],
   imports: [BrowserModule, FormsModule],
   providers: [
     {
