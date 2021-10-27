@@ -5,9 +5,15 @@
   <button (click)="incrementar(1)">+</button>
   <button (click)="decrementar(1)">-</button>
 
-  <div *ngIf="cielo === EstadoCielo.Soleado" class="cielo-soleado">Soleado</div>
+  <div *ngIf="cielo === EstadoCielo.Soleado; else noSol" class="cielo-soleado">
+    Soleado
+  </div>
   <div *ngIf="cielo === EstadoCielo.Lluvioso" class="cielo-lluvioso">
     Lluvioso
   </div>
   <div *ngIf="cielo === EstadoCielo.Nevado" class="cielo-nevado">Nevado</div>
 </div>
+
+<ng-template #noSol>
+  <span>No hay sol</span>
+</ng-template>

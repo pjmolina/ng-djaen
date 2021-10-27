@@ -1,4 +1,4 @@
-<h1>{{ title }}</h1>
+<h1 appResaltar color="#0ff">{{ title }}</h1>
 
 <!--
 
@@ -17,13 +17,20 @@
 
 <p>Ciudades: {{ ciudades | json }}</p> -->
 
-<div>
+<div appResaltar>
   <label for="filter">Filtro:</label>
   <input id="filter" type="text" [(ngModel)]="cadenaDeBusqueda" />
 </div>
 
 <app-weather
-  *ngFor="let c of ciudades | cityFilter: cadenaDeBusqueda"
+  *ngFor="
+    let c of ciudades | cityFilter: cadenaDeBusqueda;
+    let i = index;
+    let f = first;
+    let l = last;
+    let e = even;
+    let o = odd
+  "
   [ciudad]="c.ciudad"
   [temperatura]="c.temperatura"
   [cielo]="c.cielo"
