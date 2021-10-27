@@ -17,11 +17,12 @@
 
 <p>Ciudades: {{ ciudades | json }}</p> -->
 
+<!--
+
 <div appResaltar>
   <label for="filter">Filtro:</label>
   <input id="filter" type="text" [(ngModel)]="cadenaDeBusqueda" />
 </div>
-
 <app-weather
   *ngFor="
     let c of ciudades | cityFilter: cadenaDeBusqueda;
@@ -36,7 +37,10 @@
   [cielo]="c.cielo"
   (temperaturaChange)="notificarCambioTemperatura($event)"
 >
-</app-weather>
+</app-weather> -->
+
+<h1>Lugares turisticos</h1>
+<app-place-table></app-place-table>
 
 <hr />
 Pie

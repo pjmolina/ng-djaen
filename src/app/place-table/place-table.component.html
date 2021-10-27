@@ -1,0 +1,17 @@
+<table *ngIf="places && places.length">
+  <thead>
+    <th>Nombre</th>
+    <th>Ciudad</th>
+    <th>URL Foto</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let place of places">
+      <td>{{ place.name }}</td>
+      <td>{{ place.city }}</td>
+      <td>{{ place.image }}</td>
+    </tr>
+  </tbody>
+</table>
+<div class="error" *ngIf="error">
+  {{ error }}
+</div>
