@@ -11,6 +11,8 @@
 {{ nombre }} {{ surname }}
 
 <p>Fecha: {{ d1 | date }}</p>
+<p>Cantidad: {{ 123.409 | currency: "usd" }}</p>
+
 <p>Soleado: {{ true | boolean | uppercase }}</p>
 
 <p>Ciudades: {{ ciudades | json }}</p>
