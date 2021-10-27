@@ -8,6 +8,7 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
+import { CalentamientoGlobalService } from '../services/calentamiento-global.service';
 import { LoggerService } from '../services/logger.service';
 
 export enum EstadoCielo {
@@ -34,8 +35,12 @@ export class WeatherComponent implements OnInit, OnDestroy, OnChanges {
   @Output() temperaturaChange = new EventEmitter<TemperatureInfo>();
 
   EstadoCielo = EstadoCielo;
+  valorGlobal = 0;
 
-  constructor(private logger: LoggerService) {
+  constructor(
+    private logger: LoggerService,
+    private global: CalentamientoGlobalService
+  ) {
     this.logger.log('1. Me construyo:' + this.ciudad);
   }
 
@@ -54,6 +59,8 @@ export class WeatherComponent implements OnInit, OnDestroy, OnChanges {
   incrementar(inc: number): void {
     this.temperatura += inc;
 
+    this.global.incrementar();
+
     this.temperaturaChange.emit({
       ciudad: this.ciudad,
       current: this.temperatura - inc,
@@ -68,5 +75,9 @@ export class WeatherComponent implements OnInit, OnDestroy, OnChanges {
       current: this.temperatura + dec,
       newValue: this.temperatura,
     });
+  }
+
+  leerEstadoGlobal(): void {
+    this.valorGlobal = this.global.temperaturaGlobal;
   }
 }

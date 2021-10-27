@@ -12,6 +12,9 @@
     Lluvioso
   </div>
   <div *ngIf="cielo === EstadoCielo.Nevado" class="cielo-nevado">Nevado</div>
+
+  <button (click)="leerEstadoGlobal()">Estado global</button
+  ><span>{{ valorGlobal }}</span>
 </div>
 
 <ng-template #noSol>
