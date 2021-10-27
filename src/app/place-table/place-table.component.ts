@@ -14,16 +14,30 @@ export class PlaceTableComponent implements OnInit {
   constructor(private placeService: PlaceService) {}
 
   ngOnInit(): void {
-    // this.places = this.service.getPlaces();
-    this.placeService
-      .getPlaces()
-      .then((respuesta) => {
+    // version con promesas
+    // this.placeService
+    // .getPlaces()
+    // .then((respuesta) => {
+    //   this.places = respuesta;
+    //   this.error = '';
+    // })
+    // .catch((error) => {
+    //   console.error(error);
+    //   this.error = error.message;
+    // });
+
+    this.placeService.getPlaces().subscribe({
+      next: (respuesta) => {
         this.places = respuesta;
         this.error = '';
-      })
-      .catch((error) => {
-        console.error(error);
-        this.error = error.message;
-      });
+      },
+      error: (err) => {
+        console.error(err);
+        this.error = err.message;
+      },
+      complete: () => {
+        console.log('observable cerrado');
+      },
+    });
   }
 }
