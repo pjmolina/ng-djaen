@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { from } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
 import { Ciudad } from './ciudad';
 import { EstadoCielo, TemperatureInfo } from './weather/weather.component';
 
@@ -46,5 +48,23 @@ export class AppComponent {
 
   notificarCambioTemperatura(event: TemperatureInfo): void {
     console.log(event);
+  }
+
+  lanzaObservable(): void {
+    const obs$ = from([1, 2, 3, 4, 5]).pipe(
+      map((it) => {
+        if (it === 4) {
+          throw Error('Error en 4');
+        } else {
+          return it;
+        }
+      })
+    );
+
+    obs$.pipe(filter((x) => x % 2 === 0)).subscribe({
+      next: (data) => console.log(data),
+      error: (err) => console.log('ERROR:', err),
+      complete: () => console.log('Se termino'),
+    });
   }
 }

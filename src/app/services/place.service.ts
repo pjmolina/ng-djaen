@@ -12,15 +12,25 @@ const urlBase = 'https://openapi3.herokuapp.com/api';
 export class PlaceService {
   constructor(private http: HttpClient) {}
 
-  getPlaces(): Observable<Place[]> {
+  getPlaces(options: any): Observable<Place[]> {
     return this.http
       .get(urlBase + '/places', {
         headers: {
-          'Content-Type': 'application/json',
+          Accept: 'application/json',
           Authorization: 'Basic ZGVtbzpkZW1v',
         },
       })
       .pipe(map((r) => toPlaces(r as unknown[])));
+  }
+  getPlaceById(id: string): Observable<Place> {
+    return this.http
+      .get(urlBase + '/places/' + encodeURIComponent(id), {
+        headers: {
+          Accept: 'application/json',
+          Authorization: 'Basic ZGVtbzpkZW1v',
+        },
+      })
+      .pipe(map((r) => toPlace(r as unknown)));
   }
 
   // Implementacion con Promesas
@@ -35,9 +45,38 @@ export class PlaceService {
   //     .toPromise();
   //   return p;
   // }
-  create(place: Place) {}
-  update(place: Place) {}
-  delete(id: string) {}
+  create(place: Place): Observable<Place> {
+    return this.http
+      .post(urlBase + '/places', place, {
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          Authorization: 'Basic ZGVtbzpkZW1v',
+        },
+      })
+      .pipe(map((r) => r as Place));
+  }
+  update(place: Place): Observable<Place> {
+    return this.http
+      .put(urlBase + '/places/' + encodeURIComponent(place._id), place, {
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          Authorization: 'Basic ZGVtbzpkZW1v',
+        },
+      })
+      .pipe(map((r) => r as Place));
+  }
+  delete(id: string): Observable<Place> {
+    return this.http
+      .delete(urlBase + '/places/' + encodeURIComponent(id), {
+        headers: {
+          Accept: 'application/json',
+          Authorization: 'Basic ZGVtbzpkZW1v',
+        },
+      })
+      .pipe(map((r) => r as Place));
+  }
 }
 
 const toPlaces = (data: unknown[]): Place[] => {

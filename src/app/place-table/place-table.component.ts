@@ -26,14 +26,14 @@ export class PlaceTableComponent implements OnInit {
     //   this.error = error.message;
     // });
 
-    this.placeService.getPlaces().subscribe({
+    this.placeService.getPlaces({}).subscribe({
       next: (respuesta) => {
         this.places = respuesta;
         this.error = '';
       },
       error: (err) => {
         console.error(err);
-        this.error = err.message;
+        this.error = toHumanError(err.message);
       },
       complete: () => {
         console.log('observable cerrado');
@@ -41,3 +41,10 @@ export class PlaceTableComponent implements OnInit {
     });
   }
 }
+
+const toHumanError = (technicalError: string): string => {
+  if (technicalError.includes('401 Unauthorized')) {
+    return 'No está autorizado. Verifique su usuario y contraseña.';
+  }
+  return technicalError;
+};
