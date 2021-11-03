@@ -11,5 +11,10 @@ export const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'places', component: PlaceTableComponent },
   { path: 'places/:id', component: PlaceDetailComponent },
+  {
+    path: 'admin',
+    loadChildren: () =>
+      import('./admin/admin.module').then((m) => m.AdminModule),
+  },
   { path: '**', component: NotFoundComponent },
 ];
