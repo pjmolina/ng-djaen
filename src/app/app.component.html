@@ -1,4 +1,23 @@
-<h1 (click)="lanzaObservable()" appResaltar color="#0ff">{{ title }}</h1>
+<header>
+  <nav>
+    <a [routerLink]="['welcome']">Welcome</a> |
+    <a [routerLink]="['about']">About</a> |
+    <a [routerLink]="['places']">Places</a> |
+    <a [routerLink]="['places/5fae4cf4bf02f4040011ffba']">Giralda</a> |
+    <a [routerLink]="['places', '5fae4d8abf02f4040011ffc6']"
+      >Estatua de la Libertad</a
+    >
+  </nav>
+</header>
+<main>
+  <router-outlet></router-outlet>
+</main>
+<footer>
+  <hr />
+  (c) 2021, Jaén
+</footer>
+
+<!-- <h1 (click)="lanzaObservable()" appResaltar color="#0ff">{{ title }}</h1> -->
 
 <!--
 
@@ -38,9 +57,9 @@
   (temperaturaChange)="notificarCambioTemperatura($event)"
 >
 </app-weather> -->
-
+<!--
 <h1>Lugares turisticos</h1>
 <app-place-table></app-place-table>
 
 <hr />
-Pie
+Pie -->

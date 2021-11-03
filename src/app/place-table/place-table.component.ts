@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Place } from '../domain/place';
 import { PlaceService } from '../services/place.service';
 
@@ -11,7 +12,7 @@ export class PlaceTableComponent implements OnInit {
   places: Place[] = [];
   error = '';
 
-  constructor(private placeService: PlaceService) {}
+  constructor(private placeService: PlaceService, private router: Router) {}
 
   ngOnInit(): void {
     // version con promesas
@@ -39,6 +40,10 @@ export class PlaceTableComponent implements OnInit {
         console.log('observable cerrado');
       },
     });
+  }
+
+  navega(id: string): void {
+    this.router.navigate(['/places', id]);
   }
 }
 

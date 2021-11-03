@@ -1,3 +1,13 @@
 .error {
   color: firebrick;
 }
+
+.clickable {
+  cursor: pointer;
+  text-decoration: none;
+  color: orange;
+}
+.clickable:hover {
+  text-decoration: underline;
+  color: #c60;
+}
