@@ -1,1 +1,14 @@
-<p>place-detail works!</p>
+<div *ngIf="!cargando; else plantillaCargando">
+  <div *ngIf="place; else noPlace">
+    <h1>{{ place.name }}</h1>
+    <div>Ciudad: {{ place.city }}</div>
+  </div>
+</div>
+
+<ng-template #noPlace>
+  No hay ningun lugar para mostrar como detelle.
+</ng-template>
+<ng-template #plantillaCargando>
+  Cargando...
+  <img src="/assets/img/rainbow.gif" />
+</ng-template>
