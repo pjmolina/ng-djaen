@@ -7,9 +7,11 @@
     <a [routerLink]="['places', '5fae4d8abf02f4040011ffc6']"
       >Estatua de la Libertad</a
     >
-    <a [routerLink]="['admin']">admin</a> |
+    <!-- <ng-container *appHasRole="Admin"> -->
+    | <a [routerLink]="['admin']">admin</a> |
     <a [routerLink]="['admin/lugares']">Lugares</a> |
-    <a [routerLink]="['admin/usuario']">Usuarios</a> |
+    <a [routerLink]="['admin/usuarios']">Usuarios</a> |
+    <!-- </ng-container> -->
   </nav>
 </header>
 <main>
