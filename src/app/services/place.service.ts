@@ -2,9 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { Place } from '../domain/place';
-
-const urlBase = 'https://openapi3.herokuapp.com/api';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +13,7 @@ export class PlaceService {
 
   getPlaces(options: any): Observable<Place[]> {
     return this.http
-      .get(urlBase + '/places', {
+      .get(environment.serverUrl + '/places', {
         headers: {
           Accept: 'application/json',
           Authorization: 'Basic ZGVtbzpkZW1v',
@@ -24,7 +23,7 @@ export class PlaceService {
   }
   getPlaceById(id: string): Observable<Place> {
     return this.http
-      .get(urlBase + '/places/' + encodeURIComponent(id), {
+      .get(environment.serverUrl + '/places/' + encodeURIComponent(id), {
         headers: {
           Accept: 'application/json',
           Authorization: 'Basic ZGVtbzpkZW1v',
@@ -47,7 +46,7 @@ export class PlaceService {
   // }
   create(place: Place): Observable<Place> {
     return this.http
-      .post(urlBase + '/places', place, {
+      .post(environment.serverUrl + '/places', place, {
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
@@ -58,18 +57,22 @@ export class PlaceService {
   }
   update(place: Place): Observable<Place> {
     return this.http
-      .put(urlBase + '/places/' + encodeURIComponent(place._id), place, {
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-          Authorization: 'Basic ZGVtbzpkZW1v',
-        },
-      })
+      .put(
+        environment.serverUrl + '/places/' + encodeURIComponent(place._id),
+        place,
+        {
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            Authorization: 'Basic ZGVtbzpkZW1v',
+          },
+        }
+      )
       .pipe(map((r) => r as Place));
   }
   delete(id: string): Observable<Place> {
     return this.http
-      .delete(urlBase + '/places/' + encodeURIComponent(id), {
+      .delete(environment.serverUrl + '/places/' + encodeURIComponent(id), {
         headers: {
           Accept: 'application/json',
           Authorization: 'Basic ZGVtbzpkZW1v',
@@ -85,6 +88,6 @@ const toPlaces = (data: unknown[]): Place[] => {
 
 const toPlace = (data: unknown): Place => {
   const p = data as Place;
-  p.image = urlBase + p.image;
+  p.image = environment.serverUrl + p.image;
   return p;
 };

@@ -1,0 +1,4 @@
+{
+  "production": false,
+  "serverUrl": "https://openapi3.herokuapp.com/api"
+}
